@@ -5,32 +5,65 @@ export type MenuItemType = {
   description: string;
   category: string;
   isVeg: boolean;
+  image?: string; // Made optional so code doesn't break if other items don't have images yet
 };
 
-// Updated specifically for The Bakeology based on your Google Maps data
-export const menuData: MenuItemType[] =[
-  // Bakery & Desserts
-  { id: 'bd1', name: 'Sizzler Brownie Cake', price: 350, description: 'Our crowd favorite: Hot sizzling brownie served with vanilla ice cream.', category: 'Bakery & Desserts', isVeg: true },
-  { id: 'bd2', name: 'Classic Apple Pie', price: 220, description: 'Freshly baked apple pie with a buttery, flaky crust.', category: 'Bakery & Desserts', isVeg: true },
-  { id: 'bd3', name: 'Truffle Pastry', price: 180, description: 'Rich, dense, and gooey artisanal chocolate truffle pastry.', category: 'Bakery & Desserts', isVeg: true },
-  { id: 'bd4', name: 'Artisanal Chocolates', price: 250, description: 'Handcrafted premium chocolates box.', category: 'Bakery & Desserts', isVeg: true },
+export const menuData: MenuItemType[] = [
+  // Beverages (No images provided yet)
+  { id: 'b1', name: 'Signature Cold Coffee', price: 180, description: 'Rich espresso blended with creamy milk and vanilla ice cream.', category: 'Beverages', isVeg: true },
+  { id: 'b2', name: 'Classic Espresso', price: 120, description: 'A bold, double shot of our finest house blend.', category: 'Beverages', isVeg: true },
+  { id: 'b3', name: 'Artisanal Hot Chocolate', price: 200, description: 'Thick, melted premium chocolate steamed with milk.', category: 'Beverages', isVeg: true },
+  { id: 'b4', name: 'Hazelnut Frappe', price: 220, description: 'Iced blended coffee with rich hazelnut syrup and whipped cream.', category: 'Beverages', isVeg: true },
 
-  // Beverages
-  { id: 'b1', name: 'Specialty Cappuccino', price: 200, description: 'Handcrafted hot coffee brewed to absolute perfection.', category: 'Beverages', isVeg: true },
-  { id: 'b2', name: 'Artisanal Cold Coffee', price: 220, description: 'Creamy and refreshing signature cold brew blend.', category: 'Beverages', isVeg: true },
-  { id: 'b3', name: 'Passionfruit Cooler', price: 240, description: 'Tropical passionfruit mocktail with sparkling water.', category: 'Beverages', isVeg: true },
+  // Bakery & Desserts (UPDATED WITH LOCAL IMAGES)
+  { 
+    id: 'bd1', 
+    name: 'Chocolate Truffle Pastry', 
+    price: 150, 
+    description: 'Decadent layers of dark chocolate sponge and rich ganache.', 
+    category: 'Bakery & Desserts', 
+    isVeg: true,
+    image: '/images/pexels-pelageia-zelenina-58865108-10390468.webp'
+  },
+  { 
+    id: 'bd2', 
+    name: 'Classic Apple Pie', 
+    price: 180, 
+    description: 'Warm, spiced apples baked in a buttery, flaky crust.', 
+    category: 'Bakery & Desserts', 
+    isVeg: true,
+    image: '/images/pexels-mary-nikitina-53440096-7790871.webp'
+  },
+  { 
+    id: 'bd3', 
+    name: 'Artisanal Chocolates', 
+    price: 120, 
+    description: 'Handcrafted melt-in-your-mouth artisanal chocolates.', 
+    category: 'Bakery & Desserts', 
+    isVeg: true,
+    image: '/images/pexels-suju-1693027.webp'
+  },
+  { 
+    id: 'bd4', 
+    name: 'Sizzler Brownie Cake', 
+    price: 250, 
+    description: 'Hot sizzling brownie served with vanilla ice cream and chocolate sauce.', 
+    category: 'Bakery & Desserts', 
+    isVeg: true,
+    image: '/images/pexels-pixabay-45202.webp'
+  },
 
   // Fast Food
-  { id: 'f1', name: 'Signature Veg Pizza', price: 380, description: 'Freshly baked pizza loaded with premium seasonal veggies.', category: 'Fast Food', isVeg: true },
-  { id: 'f2', name: 'Bombay Pav Bhaji', price: 250, description: 'Spicy mashed vegetable curry served with soft buttery pav.', category: 'Fast Food', isVeg: true },
-  { id: 'f3', name: 'Bao Bun Veg', price: 240, description: 'Soft steamed bao buns filled with savory gourmet vegetables.', category: 'Fast Food', isVeg: true },
-  { id: 'f4', name: 'Steamed Dumplings', price: 220, description: 'Delicate dumplings stuffed with an aromatic veg filling.', category: 'Fast Food', isVeg: true },
-  { id: 'f5', name: 'Crispy Onion Strings', price: 180, description: 'Deep-fried battered onion strings served with dips.', category: 'Fast Food', isVeg: true },
+  { id: 'ff1', name: 'Wholesome Veg Burger', price: 160, description: 'Crispy veg patty with fresh lettuce, tomatoes, and house mayo.', category: 'Fast Food', isVeg: true },
+  { id: 'ff2', name: 'Barbeque Cottage Cheese Pizza', price: 280, description: 'Paneer tossed in BBQ sauce with bell peppers and mozzarella.', category: 'Fast Food', isVeg: true },
+  { id: 'ff3', name: 'Pan-Fried Chilli Paneer Bao', price: 220, description: 'Soft steamed bao buns stuffed with spicy paneer chunks.', category: 'Fast Food', isVeg: true },
+  { id: 'ff4', name: 'Cheese Corn Sizzler', price: 350, description: 'Sizzling hot plate loaded with cheese, corn, and spicy wedges.', category: 'Fast Food', isVeg: true },
 
-  // Main Course
-  { id: 'm1', name: 'Mushroom Paneer Masala', price: 320, description: 'Rich, savory gravy loaded with fresh mushrooms and soft paneer.', category: 'Main Course', isVeg: true },
-  { id: 'm2', name: 'Garlic Butter Naan', price: 80, description: 'Soft traditional bread topped with fresh garlic and butter.', category: 'Main Course', isVeg: true },
-  { id: 'm3', name: 'Missi Roti', price: 60, description: 'Traditional Indian spiced flatbread.', category: 'Main Course', isVeg: true },
+  // Main Courses
+  { id: 'mc1', name: 'Burnt Garlic Fried Rice', price: 220, description: 'Wok-tossed rice with a strong, aromatic burnt garlic flavor.', category: 'Main Courses', isVeg: true },
+  { id: 'mc2', name: 'Alfredo Macaroni Pasta', price: 260, description: 'Macaroni in a rich, creamy, and cheesy white sauce.', category: 'Main Courses', isVeg: true },
+  { id: 'mc3', name: 'Veg Schezwan Noodles', price: 210, description: 'Spicy, wok-tossed noodles with fresh vegetables and schezwan sauce.', category: 'Main Courses', isVeg: true },
+  { id: 'mc4', name: 'Special Pav Bhaji', price: 180, description: 'Mumbai-style mashed vegetable curry served with buttery buns.', category: 'Main Courses', isVeg: true },
 ];
 
-export const categories =['Bakery & Desserts', 'Beverages', 'Fast Food', 'Main Course'];
+export const categories = ['Beverages', 'Bakery & Desserts', 'Fast Food', 'Main Courses'];
