@@ -65,9 +65,26 @@ export const CartDrawer = () => {
               ) : (
                 <div className="space-y-6">
                   {cart.map((item) => (
-                    <div key={item.id} className="flex gap-4 items-start">
+                    <div key={item.id} className="flex gap-4 items-center">
+                      
+                      {/* NEW: Item Image Thumbnail */}
+                      {item.image ? (
+                        <div className="w-16 h-16 shrink-0 rounded-lg overflow-hidden border border-[#2B2620]">
+                          <img 
+                            src={item.image} 
+                            alt={item.name} 
+                            className="w-full h-full object-cover"
+                          />
+                        </div>
+                      ) : (
+                        // Fallback placeholder if no image exists
+                        <div className="w-16 h-16 shrink-0 rounded-lg bg-[#0C0804] border border-[#2B2620] flex items-center justify-center">
+                          <ShoppingBag className="w-6 h-6 text-[#2B2620]" />
+                        </div>
+                      )}
+
                       <div className="flex-1">
-                        <h4 className="text-[#FDFBF7] font-medium mb-1">{item.name}</h4>
+                        <h4 className="text-[#FDFBF7] font-medium text-sm mb-1 leading-tight">{item.name}</h4>
                         <p className="text-[#D4A373] font-bold text-sm">{formatCurrency(item.price)}</p>
                       </div>
                       
