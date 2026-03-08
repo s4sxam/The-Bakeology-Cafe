@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Coffee, Cake, Pizza, Utensils } from 'lucide-react';
 import { menuData, categories } from '../data/menuData';
 import { MenuItem } from './MenuItem';
 
@@ -7,6 +8,22 @@ export const MenuExplorer = () => {
   const [activeCategory, setActiveCategory] = useState(categories[0]);
 
   const filteredItems = menuData.filter(item => item.category === activeCategory);
+
+  // Function to get the correct icon for each category
+  const getCategoryIcon = (category: string) => {
+    switch (category) {
+      case 'Beverages':
+        return <Coffee className="w-4 h-4 mb-0.5" />;
+      case 'Bakery & Desserts':
+        return <Cake className="w-4 h-4 mb-0.5" />;
+      case 'Fast Food':
+        return <Pizza className="w-4 h-4 mb-0.5" />;
+      case 'Main Courses':
+        return <Utensils className="w-4 h-4 mb-0.5" />;
+      default:
+        return null;
+    }
+  };
 
   return (
     <section id="menu" className="py-32 bg-[#0C0804] relative">
@@ -25,18 +42,19 @@ export const MenuExplorer = () => {
           <div className="w-16 h-[1px] bg-[#D4A373] mx-auto" />
         </motion.div>
 
-        {/* Category Tabs */}
-        <div className="flex flex-wrap justify-center gap-2 md:gap-4 mb-16">
+        {/* Category Tabs with Icons */}
+        <div className="flex flex-wrap justify-center gap-3 md:gap-4 mb-16">
           {categories.map((category) => (
             <button
               key={category}
               onClick={() => setActiveCategory(category)}
-              className={`px-6 py-2.5 rounded-full text-sm font-medium tracking-wide transition-all duration-300 cursor-pointer ${
+              className={`px-6 py-3 rounded-full text-sm font-semibold tracking-wider transition-all duration-300 cursor-pointer flex items-center gap-2.5 uppercase ${
                 activeCategory === category
-                  ? 'bg-[#D4A373] text-[#0C0804]'
+                  ? 'bg-[#D4A373] text-[#0C0804] shadow-[0_0_15px_rgba(212,163,115,0.3)]'
                   : 'bg-transparent text-[#A39F98] border border-[#2B2620] hover:border-[#D4A373]/50 hover:text-[#FDFBF7]'
               }`}
             >
+              {getCategoryIcon(category)}
               {category}
             </button>
           ))}
@@ -50,7 +68,7 @@ export const MenuExplorer = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.4, ease:[0.16, 1, 0.3, 1] }}
+              transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
               className="flex flex-col"
             >
               {filteredItems.map((item, index) => (
